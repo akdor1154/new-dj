@@ -1695,11 +1695,12 @@ static int logi_dj_raw_event(struct hid_device *hdev,
 		}
 		/*
 		 * Mouse-only receivers send unnumbered mouse data. The 27 MHz
-		 * receiver uses 6 byte packets, the nano receiver 8 bytes.
+		 * receiver uses 6 byte packets, the nano receiver 8 bytes and
+		 * some gaming ones are using 16 bytes.
 		 */
 		if (djrcv_dev->unnumbered_application == HID_GD_MOUSE &&
-		    size <= 8) {
-			u8 mouse_report[9];
+		    size <= 16) {
+			u8 mouse_report[17];
 
 			/* Prepend report id */
 			mouse_report[0] = REPORT_TYPE_MOUSE;
