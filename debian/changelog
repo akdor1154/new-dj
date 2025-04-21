@@ -1,3 +1,9 @@
+new-hidpp-dkms (1.2.0) stable; urgency=medium
+
+  * rebase onto linux-next next-20240417
+
+ -- Jarrad Whitaker <jarrad@herbie.lan>  Mon, 21 Apr 2025 12:34:04 +1000
+
 new-hidpp-dkms (1.1.0) stable; urgency=medium
 
   * Changes from Benjamin Tissoires
