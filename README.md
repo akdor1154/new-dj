@@ -41,6 +41,10 @@ This repo contains
  - git merge -X subtree=upstream/ patch-upstream
 ```
 
+## STASHES:
+ - keyboard: try and get the broken keyboard working
+
+
 ## Versioning
 
 Deb package versions are maintained by `git tag -a deb-v1.0.0` -m 'v1.0.0'
