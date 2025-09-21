@@ -7,6 +7,33 @@ This repo contains
 ## Usage
  - Download and install `new-hidpp-dkms_*.deb` from the latest Github release.
 
+## New Branch Setup
+
+
+ - The `upstream` branch is the kernel master.
+   - To update:
+      `git checkout upstream`
+      `git fetch torvalds`
+      `git pull torvalds master:upstream`
+
+ - Each `patch` branch is a rebase of the patches on a particular kernel version. `patch-current`
+   is the current iteration, but this gets rebased each time.
+    - To update:
+       (find last commit before patches)
+       `git checkout patch-current`
+       `git rebase $(mainline-commit-pre-patches) --onto $(new-commit-or-tag)`, e.g. to rebase on 6.16:
+       `git rebase $(mainline-commit-pre-patches) --onto v6.16`
+       `git checkout -b patch-v3` (this will increment - next time patch-v4, etc.)
+
+
+ - `main` is development and releases. Commits to packaging system go directly on main.
+   The patches are pulled in by merging the latest patch branch and blatting existing files.
+   - To update:
+     `git revert (patch commits)`
+     `git rebase -i (HEAD^^^^^)` (squash the patch revert)
+     `git merge -X subtree=upstream/ v6.16` (new kernel, blat everything)
+     `git merge -X subtree=upstream/ patch-v3` (or v4, etc.) (re-apply patches)
+
 ## Branch setup
 
 ```
