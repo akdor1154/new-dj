@@ -40,5 +40,5 @@ deb:
 		--include 'changelog' --include 'control' --include 'dkms' --include 'rules' \
 		--exclude '*' debian/ pkg/debian/
 	cp dkms.conf pkg/
-	cd pkg && debuild
+	cd pkg && debuild -uc -us
 	rm -r pkg
